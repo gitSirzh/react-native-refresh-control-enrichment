@@ -5,7 +5,7 @@
 'use strict';
 
 import React, {Component} from 'react';
-import {View, Text, Platform, StyleSheet, ActivityIndicator} from 'react-native';
+import {View, Text, Platform, StyleSheet, ActivityIndicator, ImageBackground} from 'react-native';
 import PropTypes from 'prop-types';
 
 //ios
@@ -42,7 +42,7 @@ const defaultProps = {
  * loadingView : 左边加载中View
  * headerHeight : 头部高度
  * headerBackgroundColor : 头部背景
- * headerTitleStyle : 加载状态字体样式
+ * headerTitleStyle : 刷新状态字体样式
  * headerDateStyle : 更新时间字体样式
  * **/
 
@@ -66,28 +66,46 @@ class ZHRefreshControl extends Component {
             loadingView,
             headerHeight = 60,
             headerBackgroundColor = '#ffffff',
+            headerBackgroundImage,
+            pullView,
+            releaseView,
             headerTitleStyle = {fontSize: 14, color: '#333333'},
             headerDateStyle = {fontSize: 12, color: '#333333'},
-            titleArray = ['下拉加载','松开加载','正在加载','加载完成']
+            titleArray = ['下拉刷新', '释放刷新', '正在刷新', '刷新完成'],
         } = this.props;
-        return (
-            <View style={[styles.headView, {
-                height: headerHeight,
-                backgroundColor: headerBackgroundColor,
-            }]}>
-                <View style={[styles.headView, {flexDirection: 'row'}]}>
-                    {text === titleArray[2] ? (
-                        <>{loadingView ? (loadingView) : (<ActivityIndicator color={'#797979'}/>)}</>
-                    ) : text === titleArray[0] ? (
-                        <Text>{'⬇️'}</Text>
-                    ) : text === titleArray[1] ? (
-                        <Text>{'⬆️️'}</Text>
-                    ) : null}
-                    <Text style={[{marginLeft: 5}, headerTitleStyle]}>{text}</Text>
+        if (headerBackgroundImage) {
+            return (
+                <ImageBackground style={[styles.headView, {height: headerHeight}]} source={headerBackgroundImage}>
+                    <View style={[styles.headView, {flexDirection: 'row'}]}>
+                        {text === titleArray[2] ? (
+                            <>{loadingView ? (loadingView) : (<ActivityIndicator color={'#797979'}/>)}</>
+                        ) : text === titleArray[0] ? (
+                            <>{pullView ? (pullView) : <Text>{'⬇️'}</Text>}</>
+                        ) : text === titleArray[1] ? (
+                            <>{releaseView ? (releaseView) : <Text>{'⬆️️️'}</Text>}</>
+                        ) : null}
+                        <Text style={[{marginLeft: 5}, headerTitleStyle]}>{text}</Text>
+                    </View>
+                    <Text style={[{marginTop: 3}, headerDateStyle]}>上次更新 {dateFormat()}</Text>
+                </ImageBackground>
+            );
+        } else {
+            return (
+                <View style={[styles.headView, {height: headerHeight, backgroundColor: headerBackgroundColor}]}>
+                    <View style={[styles.headView, {flexDirection: 'row'}]}>
+                        {text === titleArray[2] ? (
+                            <>{loadingView ? (loadingView) : (<ActivityIndicator color={'#797979'}/>)}</>
+                        ) : text === titleArray[0] ? (
+                            <>{pullView ? (pullView) : <Text>{'⬇️'}</Text>}</>
+                        ) : text === titleArray[1] ? (
+                            <>{releaseView ? (releaseView) : <Text>{'⬆️️️'}</Text>}</>
+                        ) : null}
+                        <Text style={[{marginLeft: 5}, headerTitleStyle]}>{text}</Text>
+                    </View>
+                    <Text style={[{marginTop: 3}, headerDateStyle]}>上次更新 {dateFormat()}</Text>
                 </View>
-                <Text style={[{marginTop: 3}, headerDateStyle]}>上次更新 {dateFormat()}</Text>
-            </View>
-        );
+            );
+        }
     }
 
     render() {
@@ -97,7 +115,7 @@ class ZHRefreshControl extends Component {
             refreshState,
             headerHeight = 60,
             headerBackgroundColor = '#ffffff',
-            titleArray = ['下拉加载','松开加载','正在加载','加载完成']
+            titleArray = ['下拉刷新', '释放刷新', '正在刷新', '刷新完成'],
         } = this.props;
         if (Platform.OS === 'ios') {
             return (
