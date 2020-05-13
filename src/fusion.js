@@ -29,6 +29,8 @@ const propTypes = {
     headerBackgroundColor: PropTypes.string,
     headerTitleStyle: Object,
     headerDateStyle: Object,
+    pullView: PropTypes.element,
+    releaseView: PropTypes.element,
 };
 
 const defaultProps = {

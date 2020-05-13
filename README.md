@@ -67,3 +67,7 @@ import ZHRefreshControl, {ZHScrollView} from 'react-native-refresh-control-enric
     </View>
 </ZHScrollView>
 ```
+## 来源：
+    https://github.com/react-native-studio/react-native-SmartRefreshLayout
+    https://github.com/react-native-studio/react-native-MJRefresh
+## 两个的结合
