@@ -102,7 +102,7 @@ public class AnyHeader extends ReactViewGroup implements RefreshHeader {
 
     @Override
     public int onFinish(@NonNull RefreshLayout refreshLayout, boolean success) {
-        return 500;//延迟500毫秒之后再弹回
+        return 100;//延迟100毫秒之后再弹回
     }
 
     @Override
