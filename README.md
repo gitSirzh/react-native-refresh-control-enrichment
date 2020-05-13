@@ -2,7 +2,10 @@
 
 ## 演示
 
+## Android
 #### ![](https://github.com/gitSirzh/react-native-refresh-control-enrichment/blob/master/src/file/androidVideo.gif)
+
+## IOS
 #### ![](https://github.com/gitSirzh/react-native-refresh-control-enrichment/blob/master/src/file/iosVideo.gif)
 
 ## 安装
