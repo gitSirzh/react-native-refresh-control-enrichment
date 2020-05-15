@@ -6,7 +6,6 @@
 
 import React, {Component} from 'react';
 import {View, Text, Platform, StyleSheet, ActivityIndicator, ImageBackground} from 'react-native';
-import PropTypes from 'prop-types';
 
 //ios
 import MJRefresh from './iosJS/MJRefresh';
@@ -21,31 +20,18 @@ import {default as AnyHeader} from './androidJS/AnyHeader';
 //date
 import dateFormat from './util/date';
 
-const propTypes = {
-    onRefresh: PropTypes.func,
-    refreshState: PropTypes.func,
-    headerView: PropTypes.element,
-    headerHeight: PropTypes.number,
-    headerBackgroundColor: PropTypes.string,
-    headerTitleStyle: Object,
-    headerDateStyle: Object,
-    pullView: PropTypes.element,
-    releaseView: PropTypes.element,
-};
-
-const defaultProps = {
-    headerHeight: 60,
-    headerBackgroundColor: '#ffffff',
-    headerTitleStyle: {fontSize: 14, color: '#333333'},
-    headerDateStyle: {fontSize: 12, color: '#333333'},
-};
-
 /**
  * loadingView : 左边加载中View
  * headerHeight : 头部高度
- * headerBackgroundColor : 头部背景
+ * headerBackgroundColor : 头部背景色
+ * headerBackgroundImage : 头部背景图
  * headerTitleStyle : 刷新状态字体样式
  * headerDateStyle : 更新时间字体样式
+ * titleArray : 自定义提示状态，注：数量需要为四个
+ * pullView : 下拉样式
+ * releaseView : 释放样式
+ * successView : 成功样式
+ * showDate : 展示刷新时间，默认true：展示
  * **/
 
 class ZHRefreshControl extends Component {
@@ -71,9 +57,11 @@ class ZHRefreshControl extends Component {
             headerBackgroundImage,
             pullView,
             releaseView,
+            successView,
             headerTitleStyle = {fontSize: 14, color: '#333333'},
             headerDateStyle = {fontSize: 12, color: '#333333'},
             titleArray = ['下拉刷新', '释放刷新', '正在刷新', '刷新完成'],
+            showDate = true,
         } = this.props;
         if (headerBackgroundImage) {
             return (
@@ -85,10 +73,12 @@ class ZHRefreshControl extends Component {
                             <>{pullView ? (pullView) : <Text>{'⬇️'}</Text>}</>
                         ) : text === titleArray[1] ? (
                             <>{releaseView ? (releaseView) : <Text>{'⬆️️️'}</Text>}</>
-                        ) : null}
+                        ) : (
+                            <>{successView ? (successView) : null}</>
+                        )}
                         <Text style={[{marginLeft: 5}, headerTitleStyle]}>{text}</Text>
                     </View>
-                    <Text style={[{marginTop: 3}, headerDateStyle]}>上次更新 {dateFormat()}</Text>
+                    {showDate ? (<Text style={[{marginTop: 3}, headerDateStyle]}>上次更新 {dateFormat()}</Text>) : null}
                 </ImageBackground>
             );
         } else {
@@ -101,10 +91,12 @@ class ZHRefreshControl extends Component {
                             <>{pullView ? (pullView) : <Text>{'⬇️'}</Text>}</>
                         ) : text === titleArray[1] ? (
                             <>{releaseView ? (releaseView) : <Text>{'⬆️️️'}</Text>}</>
-                        ) : null}
+                        ) : (
+                            <>{successView ? (successView) : null}</>
+                        )}
                         <Text style={[{marginLeft: 5}, headerTitleStyle]}>{text}</Text>
                     </View>
-                    <Text style={[{marginTop: 3}, headerDateStyle]}>上次更新 {dateFormat()}</Text>
+                    {showDate ? (<Text style={[{marginTop: 3}, headerDateStyle]}>上次更新 {dateFormat()}</Text>) : null}
                 </View>
             );
         }
