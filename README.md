@@ -52,11 +52,8 @@ import ZHRefreshControl, {ZHScrollView} from 'react-native-refresh-control-enric
 </ZHScrollView>
 ```
 ## 拓展
-```
 1、loading动画可以参考插件:[react-native-spinkit](https://github.com/maxs15/react-native-spinkit)
-
 2、用 [FlatList](https://reactnative.dev/docs/flatlist.html) 做列表的话，需要把 [FlatList](https://reactnative.dev/docs/flatlist.html) 封装一下来继承 `ZHScrollView` ，替换掉原本继承的 [ScrollView](https://reactnative.dev/docs/scrollview)
-```
 
 ## 文档
 
