@@ -3,14 +3,11 @@
 原生下拉刷新组件
 
 ## 演示
-
 ## Android
-<img width=882px src="https://github.com/gitSirzh/react-native-refresh-control-enrichment/blob/master/src/file
-/androidVideo.gif" alt="android video">
+![](https://github.com/gitSirzh/react-native-refresh-control-enrichment/blob/master/src/file/androidVideo.gif)
 
 ## IOS
-<img width=882px src="https://github.com/gitSirzh/react-native-refresh-control-enrichment/blob/master/src/file/iosVideo
-.gif" alt="ios video">
+![](https://github.com/gitSirzh/react-native-refresh-control-enrichment/blob/master/src/file/iosVideo.gif)
 
 ## 安装
 
@@ -107,7 +104,7 @@ import ZHRefreshControl, {ZHScrollView} from 'react-native-refresh-control-enric
 
 | Type | Default |
 | ---- | -------- |
-| string | '#ffffff'     |
+| string | #ffffff     |
 
 ---
 
