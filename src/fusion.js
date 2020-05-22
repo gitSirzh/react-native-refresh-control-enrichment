@@ -5,7 +5,14 @@
 'use strict';
 
 import React, {Component} from 'react';
-import {View, Text, Platform, StyleSheet, ActivityIndicator, ImageBackground} from 'react-native';
+import {
+    View,
+    Text,
+    Platform,
+    StyleSheet,
+    ActivityIndicator,
+    ImageBackground,
+} from 'react-native';
 
 //ios
 import MJRefresh from './iosJS/MJRefresh';
@@ -32,14 +39,17 @@ import dateFormat from './util/date';
  * releaseView : 释放样式
  * successView : 成功样式
  * showDate : 展示刷新时间，默认true：展示
+ * showText : 展示刷新状态，默认true：展示
  * **/
+
+const TITLEARRAY = ['下拉刷新', '释放刷新', '正在刷新', '刷新完成'];
 
 class ZHRefreshControl extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            text: props.titleArray[0],
+            text: props.titleArray ? props.titleArray[0] : TITLEARRAY[0],
         };
     }
 
@@ -60,8 +70,9 @@ class ZHRefreshControl extends Component {
             successView,
             headerTitleStyle = {fontSize: 14, color: '#333333'},
             headerDateStyle = {fontSize: 12, color: '#333333'},
-            titleArray = ['下拉刷新', '释放刷新', '正在刷新', '刷新完成'],
+            titleArray = TITLEARRAY,
             showDate = true,
+            showText = true,
         } = this.props;
         if (headerBackgroundImage) {
             return (
@@ -76,7 +87,9 @@ class ZHRefreshControl extends Component {
                         ) : (
                             <>{successView ? (successView) : null}</>
                         )}
-                        <Text style={[{marginLeft: 5}, headerTitleStyle]}>{text}</Text>
+                        {showText ? (
+                            <Text style={[{marginLeft: 5}, headerTitleStyle]}>{text}</Text>
+                        ) : null}
                     </View>
                     {showDate ? (<Text style={[{marginTop: 3}, headerDateStyle]}>上次更新 {dateFormat()}</Text>) : null}
                 </ImageBackground>
@@ -94,7 +107,9 @@ class ZHRefreshControl extends Component {
                         ) : (
                             <>{successView ? (successView) : null}</>
                         )}
-                        <Text style={[{marginLeft: 5}, headerTitleStyle]}>{text}</Text>
+                        {showText ? (
+                            <Text style={[{marginLeft: 5}, headerTitleStyle]}>{text}</Text>
+                        ) : null}
                     </View>
                     {showDate ? (<Text style={[{marginTop: 3}, headerDateStyle]}>上次更新 {dateFormat()}</Text>) : null}
                 </View>
@@ -109,7 +124,7 @@ class ZHRefreshControl extends Component {
             refreshState,
             headerHeight = 60,
             headerBackgroundColor = '#ffffff',
-            titleArray = ['下拉刷新', '释放刷新', '正在刷新', '刷新完成'],
+            titleArray = TITLEARRAY,
         } = this.props;
         if (Platform.OS === 'ios') {
             return (
@@ -117,7 +132,7 @@ class ZHRefreshControl extends Component {
                     {...this.props}
                     ref={ref => this._mjRefresh = ref}
                     onPulling={e => {
-                        if (e.nativeEvent.percent < 0.1) {
+                        if (e.nativeEvent.percent < 1) {
                             this.setState({text: titleArray[0]});
                             refreshState && refreshState(titleArray[0]);
                         }

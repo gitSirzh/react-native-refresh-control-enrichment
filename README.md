@@ -5,10 +5,12 @@
 ## 演示
 
 ## Android
-#### ![](https://github.com/gitSirzh/react-native-refresh-control-enrichment/blob/master/src/file/androidVideo.gif)
+<img width=882px src="https://github.com/gitSirzh/react-native-refresh-control-enrichment/blob/master/src/file
+/androidVideo.gif" alt="android video">
 
 ## IOS
-#### ![](https://github.com/gitSirzh/react-native-refresh-control-enrichment/blob/master/src/file/iosVideo.gif)
+<img width=882px src="https://github.com/gitSirzh/react-native-refresh-control-enrichment/blob/master/src/file/iosVideo
+.gif" alt="ios video">
 
 ## 安装
 
@@ -37,32 +39,22 @@ import ZHRefreshControl, {ZHScrollView} from 'react-native-refresh-control-enric
     refreshControl={
         <ZHRefreshControl
             ref={(r) => this._finishRefresh = r}
-            headerHeight={60} //头部高度
-            // headerBackgroundColor={'#fff'} //头部背景色，建议：尽量不要和头部背景图片结合使用
-            headerBackgroundImage={{uri:'https://youimg1.c-ctrip.com/target/100k0q000000gqxudED0D.jpg'}} //头部背景图片，建议：尽量不要和头部背景色结合使用
-            headerTitleStyle={{fontSize: 14, color: '#fff'}} //加载状态字体样式
-            headerDateStyle = {{fontSize: 12, color: '#fff'}} //更新时间字体样式
-            titleArray={['下拉刷新', '释放刷新', '正在刷新', '刷新完成']} //自定义提示状态，注：数量需要为四个
-            loadingView={(<ActivityIndicator color={'#fff'}/>)} //刷新中样式
             onRefresh={()=>{
                 console.log('======== 执行刷新 ========');
+                setTimeout(()=>{
+                    //加载完成
+                    this._finishRefresh.finishRefresh();
+                },2000)
             }}
         />
     }
 >
     <View style={{flex: 1, height: 1000, backgroundColor: '#dddddd', alignItems: 'center', paddingTop: 300}}>
-        <Text  style={{color: '#000', fontSize: 16}}>⬇️ 拉刷一刷😊</Text>
-        <TouchableOpacity
-            style={{padding: 20, borderRadius:10, marginTop: 60, backgroundColor:'#4240ff'}}
-            onPress={() => {
-                //加载完成
-                this._finishRefresh.finishRefresh();
-            }}
-        >
-            <Text style={{color: '#fff', fontSize: 16}}>点击刷新完成</Text>
-        </TouchableOpacity>
+        <Text style={{color: '#000', fontSize: 16}}>⬇️ 拉刷一刷😊</Text>
     </View>
 </ZHScrollView>
+
+//loading动画可以参考 https://github.com/maxs15/react-native-spinkit
 ```
 
 # 文档
@@ -126,6 +118,16 @@ import ZHRefreshControl, {ZHScrollView} from 'react-native-refresh-control-enric
 | Type | Required |
 | ---- | -------- |
 | url | No       |
+
+---
+
+### `showText`
+
+展示刷新状态
+
+| Type | Default |
+| ---- | -------- |
+| boolean | Yes       |
 
 ---
 
