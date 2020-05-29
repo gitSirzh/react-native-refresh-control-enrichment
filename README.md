@@ -38,6 +38,8 @@ import ZHRefreshControl, {ZHScrollView} from 'react-native-refresh-control-enric
     refreshControl={
         <ZHRefreshControl
             ref={(r) => this._finishRefresh = r}
+            headerHeight={80} //头部高度
+            headerBackgroundColor={'#e6e6e6'} //头部背景色和头部背景图片单独使用，不要结合使用
             onRefresh={()=>{
                 console.log('======== 执行刷新 ========');
                 setTimeout(()=>{
@@ -53,10 +55,42 @@ import ZHRefreshControl, {ZHScrollView} from 'react-native-refresh-control-enric
     </View>
 </ZHScrollView>
 ```
+## 结合`FlatList`使用
+```javascript
+import ZHRefreshControl, {ZHScrollView} from 'react-native-refresh-control-enrichment';
+
+<FlatList
+    data={['#8c4fff', '#f0b1ff', '#908c95', '#effba5', '#2b2cff', '#009c18']}
+    renderScrollComponent={(props) => (
+        <ZHScrollView
+            style={{flex: 1}}
+            refreshControl={
+                <ZHRefreshControl
+                    ref={(r) => this._finishRefresh = r}
+                    headerHeight={80} //头部高度
+                    headerBackgroundColor={'#e6e6e6'} //头部背景色和头部背景图片单独使用，不要结合使用
+                    onRefresh={()=>{
+                        console.log('======== 执行刷新 ========');
+                        setTimeout(()=>{
+                            //加载完成
+                            this._finishRefresh.finishRefresh();
+                        },2000)
+                    }}
+                />
+            }
+            {...props}
+        />
+    )}
+    keyExtractor={(item, key) => key.toString()}
+    renderItem={({item, index}) => (
+        <View style={{backgroundColor: item, marginHorizontal: 15, height: 100, borderRadius: 20, marginTop: 15}}/>
+    )}
+/>
+```
+
 ## 拓展
 ###### 1、loading动画可以参考插件:[lottie-react-native](https://github.com/react-native-community/lottie-react-native)
 ###### 2、loading动画也可以参考插件:[react-native-spinkit](https://github.com/maxs15/react-native-spinkit)
-###### 3、用 [FlatList](https://reactnative.dev/docs/flatlist.html) 做列表的话，需要把原来继承的 [ScrollView](https://reactnative.dev/docs/scrollview) ,替换为继承 `ZHScrollView`；仅做Android平台无需继承 `ZHScrollView`，引入 `ZHRefreshControl`即可
 
 ## 文档
 

@@ -222,10 +222,6 @@ const styles = StyleSheet.create({
     },
 });
 
-if (Platform.OS === 'ios') {
-    module.exports = MJScrollView;
-} else {
-    module.exports = ScrollView;
-}
+module.exports = Platform.OS === 'ios' ? MJScrollView : ScrollView;
 
 
