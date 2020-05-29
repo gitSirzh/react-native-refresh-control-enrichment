@@ -2,7 +2,7 @@
   "name": "react-native-refresh-control-enrichment",
   "title": "React Native Refresh Control Enrichment",
   "version": "0.0.5",
-  "description": "TODO",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
