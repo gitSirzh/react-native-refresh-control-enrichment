@@ -76,7 +76,7 @@ import ZHRefreshControl, {ZHScrollView} from 'react-native-refresh-control-enric
 
 | Type | Required |
 | ---- | -------- |
-| function | No       |
+| function | Yes       |
 
 ---
 
@@ -116,7 +116,7 @@ import ZHRefreshControl, {ZHScrollView} from 'react-native-refresh-control-enric
 
 | Type | Required |
 | ---- | -------- |
-| url | No       |
+| url | Yes       |
 
 ---
 
