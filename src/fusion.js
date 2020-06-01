@@ -172,7 +172,7 @@ class ZHRefreshControl extends Component {
                         this.setState({text: titleArray[1]});
                         refreshState && refreshState(titleArray[1]);
                     }}
-                    onHeaderReleased={() => {
+                    onRefresh={() => {
                         onRefresh && onRefresh();
                         this.setState({text: titleArray[2]});
                         refreshState && refreshState(titleArray[2]);
