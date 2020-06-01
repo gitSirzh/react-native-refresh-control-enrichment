@@ -3,8 +3,7 @@
  */
 
 export default function dateFormat() {
-    let date;
-    date = new Date(new Date() - 0);
+    let date = new Date(new Date() - 0);
     let y = date.getFullYear();                         //年
     let m = date.getMonth() + 1;
     m = m < 10 ? ('0' + m) : m;                         //月
@@ -17,5 +16,4 @@ export default function dateFormat() {
     let second = date.getSeconds();
     second = second < 10 ? ('0' + second) : second;     //秒
     return m + '-' + d + ' ' + h + ':' + minute;
-    // return y + '-' + m + '-' + d + ' ' + h + ':' + minute + ':' + second;
 }

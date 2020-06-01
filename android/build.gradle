@@ -26,7 +26,7 @@ android {
 }
 
 dependencies {
-    implementation "com.facebook.react:react-native:+"
     implementation "com.scwang.smartrefresh:SmartRefreshLayout:1.0.5.1"
-    implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.0.5.1'
+    implementation "com.scwang.smartrefresh:SmartRefreshHeader:1.0.5.1"
+    implementation "com.facebook.react:react-native:+"
 }
