@@ -136,6 +136,16 @@ import ZHRefreshControl, {ZHScrollView} from 'react-native-refresh-control-enric
 
 ---
 
+### `centerTop`
+
+内容距离顶部高度（一般为状态栏高度）
+
+| Type | Default |
+| ---- | -------- |
+| number | 0       |
+
+---
+
 ### `headerBackgroundColor`
 
 头部背景色

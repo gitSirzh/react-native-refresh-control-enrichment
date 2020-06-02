@@ -30,6 +30,7 @@ import dateFormat from './util/date';
 /**
  * loadingView : 左边加载中View
  * headerHeight : 头部高度
+ * centerTop : 内容距离顶部高度（一般为状态栏高度）
  * headerBackgroundColor : 头部背景色
  * headerBackgroundImage : 头部背景图
  * headerTitleStyle : 刷新状态字体样式
@@ -40,7 +41,7 @@ import dateFormat from './util/date';
  * successView : 成功样式
  * showDate : 展示刷新时间，默认true：展示
  * showText : 展示刷新状态，默认true：展示
- * **/
+ */
 
 const TITLEARRAY = ['下拉刷新', '释放刷新', '正在刷新', '刷新完成'];
 
@@ -63,6 +64,7 @@ class ZHRefreshControl extends Component {
         let {
             loadingView,
             headerHeight = 60,
+            centerTop = 0,
             headerBackgroundColor = '#ffffff',
             headerBackgroundImage,
             pullView,
@@ -76,8 +78,8 @@ class ZHRefreshControl extends Component {
         } = this.props;
         if (headerBackgroundImage) {
             return (
-                <ImageBackground style={[styles.headView, {height: headerHeight}]} source={headerBackgroundImage}>
-                    <View style={[styles.headView, {flexDirection: 'row'}]}>
+                <ImageBackground style={[styles.headView, {height: headerHeight + centerTop}]} source={headerBackgroundImage}>
+                    <View style={[styles.headView, {flexDirection: 'row', marginTop: centerTop}]}>
                         {text === titleArray[2] ? (
                             <>{loadingView ? (loadingView) : (<ActivityIndicator color={'#797979'}/>)}</>
                         ) : text === titleArray[0] ? (
@@ -96,8 +98,8 @@ class ZHRefreshControl extends Component {
             );
         } else {
             return (
-                <View style={[styles.headView, {height: headerHeight, backgroundColor: headerBackgroundColor}]}>
-                    <View style={[styles.headView, {flexDirection: 'row'}]}>
+                <View style={[styles.headView, {height: headerHeight + centerTop, backgroundColor: headerBackgroundColor}]}>
+                    <View style={[styles.headView, {flexDirection: 'row', marginTop: centerTop}]}>
                         {text === titleArray[2] ? (
                             <>{loadingView ? (loadingView) : (<ActivityIndicator color={'#797979'}/>)}</>
                         ) : text === titleArray[0] ? (
@@ -123,6 +125,7 @@ class ZHRefreshControl extends Component {
             onRefresh,
             refreshState,
             headerHeight = 60,
+            centerTop = 0,
             headerBackgroundColor = '#ffffff',
             titleArray = TITLEARRAY,
         } = this.props;
@@ -160,7 +163,7 @@ class ZHRefreshControl extends Component {
                     {...this.props}
                     ref={ref => this.rc = ref}
                     primaryColor={headerBackgroundColor}
-                    headerHeight={headerHeight}
+                    headerHeight={headerHeight + centerTop}
                     renderHeader={(
                         <AnyHeader>{this.renderHeader()}</AnyHeader>
                     )}
