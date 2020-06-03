@@ -91,8 +91,8 @@ import ZHRefreshControl, {ZHScrollView} from 'react-native-refresh-control-enric
 ```
 
 ## 拓展
-##### 1、loading动画可以参考组件:[lottie-react-native](https://github.com/react-native-community/lottie-react-native)
-##### 2、也可以参考组件:[react-native-spinkit](https://github.com/maxs15/react-native-spinkit)
+##### 1、loading动画可以参考组件: [lottie-react-native](https://github.com/react-native-community/lottie-react-native)
+##### 2、也可以参考组件: [react-native-spinkit](https://github.com/maxs15/react-native-spinkit)
 
 ## 文档
 
