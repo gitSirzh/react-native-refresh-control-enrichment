@@ -1,4 +1,5 @@
-# react-native-refresh-control-enrichment
+## react-native-refresh-control-enrichment
+[![npm version](https://badge.fury.io/js/react-native-refresh-control-enrichment.svg)](https://badge.fury.io/js/react-native-refresh-control-enrichment)
 
 原生下拉刷新组件
 
