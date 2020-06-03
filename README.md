@@ -118,7 +118,7 @@ import ZHRefreshControl, {ZHScrollView} from 'react-native-refresh-control-enric
 
 ### `loadingView`
 
-加载中样式
+加载中View
 
 | Type | Default |
 | ---- | -------- |
@@ -182,7 +182,7 @@ import ZHRefreshControl, {ZHScrollView} from 'react-native-refresh-control-enric
 
 | Type | Default |
 | ---- | -------- |
-| object | Yes       |
+| style | Yes       |
 
 ---
 
@@ -202,7 +202,7 @@ import ZHRefreshControl, {ZHScrollView} from 'react-native-refresh-control-enric
 
 | Type | Default |
 | ---- | -------- |
-| object | Yes       |
+| style | Yes       |
 
 ---
 
@@ -218,7 +218,7 @@ import ZHRefreshControl, {ZHScrollView} from 'react-native-refresh-control-enric
 
 ### `pullView`
 
-下拉样式
+下拉View
 
 | Type | Default |
 | ---- | -------- |
@@ -228,7 +228,7 @@ import ZHRefreshControl, {ZHScrollView} from 'react-native-refresh-control-enric
 
 ### `releaseView`
 
-释放样式
+释放View
 
 | Type | Default |
 | ---- | -------- |
@@ -238,7 +238,7 @@ import ZHRefreshControl, {ZHScrollView} from 'react-native-refresh-control-enric
 
 ### `successView`
 
-成功样式
+成功View
 
 | Type | Default |
 | ---- | -------- |
@@ -246,7 +246,8 @@ import ZHRefreshControl, {ZHScrollView} from 'react-native-refresh-control-enric
 
 ---
 
-
-## 来源：
+## 引用库：
+### Android：
     https://github.com/react-native-studio/react-native-SmartRefreshLayout
+### iOS：
     https://github.com/react-native-studio/react-native-MJRefresh
