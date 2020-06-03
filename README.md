@@ -25,6 +25,7 @@ or using yarn:
 ```shell
 yarn add react-native-refresh-control-enrichment
 ```
+## 链接
 ```
 # RN >= 0.61.5
 cd ios && pod install
