@@ -13,7 +13,11 @@
     "baseUrl": "https://github.com/gitSirzh/react-native-refresh-control-enrichment"
   },
   "keywords": [
-    "react-native"
+    "react-native",
+    "refresh",
+    "control",
+    "ios",
+    "android"
   ],
   "author": {
     "name": "jszh",
