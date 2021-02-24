@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {
     requireNativeComponent,
     ScrollView,
+    ScrollViewProps,
     View,
     Platform,
     StyleSheet,
@@ -23,7 +24,7 @@ const RCTMJScrollView = Platform.OS === 'ios' ? requireNativeComponent('RCTMJScr
 
 const RCTMJScrollContentView = Platform.OS === 'ios' ? requireNativeComponent('RCTMJScrollContentView', View) : ScrollView;
 
-class MJScrollView extends ScrollView {
+class MJScrollView extends Component<ScrollViewProps, any> {
     render() {
         let ScrollViewClass = RCTMJScrollView;
         let ScrollContentContainerViewClass = RCTMJScrollContentView;
