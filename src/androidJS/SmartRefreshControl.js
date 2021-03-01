@@ -1,8 +1,5 @@
 import React, {Component} from 'react';
 import {
-    StyleSheet,
-    View,
-    Text,
     requireNativeComponent,
     findNodeHandle,
     UIManager,

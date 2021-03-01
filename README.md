@@ -1,20 +1,15 @@
 ## react-native-refresh-control-enrichment
 [![npm version](https://badge.fury.io/js/react-native-refresh-control-enrichment.svg)](https://badge.fury.io/js/react-native-refresh-control-enrichment)
 
-原生下拉刷新组件
+Native Refresh
 
-#### 如果感觉不错，[请点个🌟](https://github.com/gitSirzh/react-native-refresh-control-enrichment)
-
-## 演示
 ## Android
 ![](https://github.com/gitSirzh/react-native-refresh-control-enrichment/blob/master/src/file/androidVideo.gif)
 
 ## IOS
 ![](https://github.com/gitSirzh/react-native-refresh-control-enrichment/blob/master/src/file/iosVideo.gif)
 
-## 安装
-
-Using npm:
+## Using npm
 
 ```shell
 npm install react-native-refresh-control-enrichment --save
@@ -26,13 +21,13 @@ or using yarn:
 yarn add react-native-refresh-control-enrichment
 ```
 
-## 链接
-```
-# RN >= 0.61.5
-cd ios && pod install
-```
+## Installation
 
-## 使用
+#### react-native version >= 0.61.5
+After that, we need to install the dependencies to use the project on iOS(you can skip this part, if you are using this on Android)
+Now run：```cd ios && pod install```
+
+## Using
 ```javascript
 import ZHRefreshControl, {ZHScrollView} from 'react-native-refresh-control-enrichment';
 
@@ -41,47 +36,49 @@ import ZHRefreshControl, {ZHScrollView} from 'react-native-refresh-control-enric
     refreshControl={
         <ZHRefreshControl
             ref={(r) => this._finishRefresh = r}
-            headerHeight={80} //头部高度
-            headerBackgroundColor={'#e6e6e6'} //头部背景色和头部背景图片单独使用，不要结合使用
+            headerHeight={80} // headerHeight
+            headerBackgroundColor={'#e6e6e6'} // headerBackgroundColor and headerBackgroundImage, do not combine
             onRefresh={()=>{
-                console.log('======== 执行刷新 ========');
+                console.log('======== Refreshing ========');
                 setTimeout(()=>{
-                    //加载完成
+                    // Refreshing End
                     this._finishRefresh.finishRefresh();
+                    console.log('======== Refreshing End ========');
                 },2000)
             }}
         />
     }
 >
     <View style={{flex: 1, height: 1000, backgroundColor: '#dddddd', alignItems: 'center', paddingTop: 300}}>
-        <Text style={{color: '#000', fontSize: 16}}>⬇️ 拉刷一刷😊</Text>
+        <Text style={{color: '#000', fontSize: 16}}>⬇️ down 😊</Text>
     </View>
 </ZHScrollView>
 ```
-## 结合`FlatList`使用
+## Using In FlatList
 ```javascript
+import {FlatList} from 'react-native';
 import ZHRefreshControl, {ZHScrollView} from 'react-native-refresh-control-enrichment';
 
 <FlatList
     data={['#8c4fff', '#f0b1ff', '#908c95', '#effba5', '#2b2cff', '#009c18']}
-    renderScrollComponent={(props) => (
+    renderScrollComponent={() => (
         <ZHScrollView
             style={{flex: 1}}
             refreshControl={
                 <ZHRefreshControl
                     ref={(r) => this._finishRefresh = r}
-                    headerHeight={80} //头部高度
-                    headerBackgroundColor={'#e6e6e6'} //头部背景色和头部背景图片单独使用，不要结合使用
+                    headerHeight={80} // headerHeight
+                    headerBackgroundColor={'#e6e6e6'} // headerBackgroundColor and headerBackgroundImage, do not combine
                     onRefresh={()=>{
-                        console.log('======== 执行刷新 ========');
+                        console.log('======== Refreshing ========');
                         setTimeout(()=>{
-                            //加载完成
+                            // Refreshing End
                             this._finishRefresh.finishRefresh();
+                            console.log('======== Refreshing End ========');
                         },2000)
                     }}
                 />
             }
-            {...props}
         />
     )}
     keyExtractor={(item, key) => key.toString()}
@@ -91,11 +88,7 @@ import ZHRefreshControl, {ZHScrollView} from 'react-native-refresh-control-enric
 />
 ```
 
-## 拓展
-##### 1、loading动画可以参考组件: [lottie-react-native](https://github.com/react-native-community/lottie-react-native)
-##### 2、也可以参考组件: [react-native-spinkit](https://github.com/maxs15/react-native-spinkit)
-
-## 文档
+## Documentation
 
 ## Props
 
@@ -221,7 +214,7 @@ import ZHRefreshControl, {ZHScrollView} from 'react-native-refresh-control-enric
 
 ### `pullView`
 
-下拉View
+下拉 LoadingView
 
 | Type | Default |
 | ---- | -------- |
@@ -231,7 +224,7 @@ import ZHRefreshControl, {ZHScrollView} from 'react-native-refresh-control-enric
 
 ### `releaseView`
 
-释放View
+释放 LoadingView
 
 | Type | Default |
 | ---- | -------- |
@@ -241,7 +234,7 @@ import ZHRefreshControl, {ZHScrollView} from 'react-native-refresh-control-enric
 
 ### `successView`
 
-成功View
+成功 LoadingView
 
 | Type | Default |
 | ---- | -------- |
@@ -249,7 +242,7 @@ import ZHRefreshControl, {ZHScrollView} from 'react-native-refresh-control-enric
 
 ---
 
-## 引用库：
+## Reference library：
 #### Android：
     https://github.com/react-native-studio/react-native-SmartRefreshLayout
 #### iOS：
