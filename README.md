@@ -61,7 +61,7 @@ import ZHRefreshControl, {ZHScrollView} from 'react-native-refresh-control-enric
 
 <FlatList
     data={['#8c4fff', '#f0b1ff', '#908c95', '#effba5', '#2b2cff', '#009c18']}
-    renderScrollComponent={() => (
+    renderScrollComponent={(props) => (
         <ZHScrollView
             style={{flex: 1}}
             refreshControl={
@@ -79,6 +79,7 @@ import ZHRefreshControl, {ZHScrollView} from 'react-native-refresh-control-enric
                     }}
                 />
             }
+            {...props}
         />
     )}
     keyExtractor={(item, key) => key.toString()}
