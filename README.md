@@ -1,6 +1,8 @@
 ## react-native-refresh-control-enrichment
 [![npm version](https://badge.fury.io/js/react-native-refresh-control-enrichment.svg)](https://badge.fury.io/js/react-native-refresh-control-enrichment)
 
+[![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=gitSirzh)](https://github.com/gitSirzh/react-native-refresh-control-enrichment)
+
 Native Refresh
 
 ## Android
